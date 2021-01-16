@@ -1,15 +1,15 @@
 ---
 title: "端口要求"
-keywords: 'Kubernetes, KubeSphere, port-requirements, firewall-rules'
-description: 'Port requirements in KubeSphere'
+keywords: 'Kubernetes, KubeSphere, 端口要求, 防火墙规则'
+description: 'KubeSphere 组件通讯端口要求'
 
 linkTitle: "端口要求"
-weight: 2120
+weight: 3140
 ---
 
-KubeSphere 需要某些端口用于服务之间的通信。 如果您的网络配置有防火墙规则，则需要确保基础组件可以通过特定端口相互通信。
+KubeSphere 需要某些端口用于服务之间的通信。如果您的网络配置有防火墙规则，则需要确保基础设施组件可以通过特定端口相互通信。这些端口用作某些进程或服务的通信端点。
 
-|Service|Protocol|Action|Start Port|End Port|Notes
+|服务|协议|行为|起始端口|结束端口|备注
 |---|---|---|---|---|---|
 |ssh|TCP|allow|22|
 |etcd|TCP|allow|2379|2380|
@@ -20,11 +20,11 @@ KubeSphere 需要某些端口用于服务之间的通信。 如果您的网络�
 |master|TCP|allow|10250|10258|
 |dns|TCP|allow|53|
 |dns|UDP|allow|53|
-|local-registry|TCP|allow|5000||For offline environment|
-|local-apt|TCP|allow|5080||For offline environment|
-|rpcbind|TCP|allow|111|| Required if NFS is used|
-|ipip| IPENCAP / IPIP|allow| | |Calico needs to allow the ipip protocol |
+|local-registry|TCP|allow|5000||离线环境需要|
+|local-apt|TCP|allow|5080||离线环境需要|
+|rpcbind|TCP|allow|111|| 使用 NFS 时需要|
+|ipip| IPENCAP / IPIP|allow| | |Calico 需要使用 IPIP 协议 |
 
 {{< notice note >}}
-When you use the Calico network plugin and run your cluster in a classic network on cloud, you need to enable both IPENCAP and IPIP protocol for the source IP.
+当您使用 Calico 网络插件并且在云平台上使用经典网络运行集群时，您需要对源地址启用 IPENCAP 和 IPIP 协议。
 {{</ notice >}}

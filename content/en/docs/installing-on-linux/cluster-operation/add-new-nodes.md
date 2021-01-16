@@ -3,7 +3,7 @@ title: "Add New Nodes"
 keywords: 'Kubernetes, KubeSphere, scale-up, add-nodes'
 description: 'How to add new nodes to an existing cluster.'
 
-weight: 2340
+weight: 3410
 ---
 
 After you use KubeSphere for a certain period of time, it is likely that you need to scale out your cluster with an increasing number of workloads. In this case, KubeSphere provides script to add new nodes to the cluster. Fundamentally, the operation is based on Kubelet's registration mechanism. In other words, the new nodes will automatically join the existing Kubernetes cluster.
@@ -24,7 +24,7 @@ For example, if you start with [all-in-one installation](../../../quick-start/al
 
 ```bash
 # Assume your original Kubernetes cluster is v1.17.9
-./kk create config --with-kubesphere --with-kubernetes v1.17.9
+./kk create config --with-kubesphere v3.0.0 --with-kubernetes v1.17.9
 ```
 
 The following section demonstrates how to add two nodes (i.e. `node1` and `node2`) using `root` user as an example. It is assumed that your host name of the first machine is `master1` (Replace the following host name with yours).

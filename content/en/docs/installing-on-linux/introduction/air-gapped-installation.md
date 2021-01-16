@@ -2,9 +2,8 @@
 title: "Air-gapped Installation"
 keywords: 'Air-gapped, Installation, KubeSphere'
 description: 'How to install KubeSphere in an air-gapped environment.'
-
 linkTitle: "Air-gapped Installation"
-weight: 2113
+weight: 3130
 ---
 
 The air-gapped installation is almost the same as the online installation except that you must create a local registry to host Docker images. This tutorial demonstrates how to install KubeSphere and Kubernetes in an air-gapped environment.
@@ -13,7 +12,7 @@ The air-gapped installation is almost the same as the online installation except
 
 Please see the requirements for hardware and operating system shown below. To get started with multi-node installation, you need to prepare at least three hosts according to the following requirements.
 
-### System Requirements
+### System requirements
 
 | Systems                                                | Minimum Requirements (Each node)             |
 | ------------------------------------------------------ | -------------------------------------------- |
@@ -29,7 +28,7 @@ Please see the requirements for hardware and operating system shown below. To ge
 
 {{</ notice >}}
 
-### Node Requirements
+### Node requirements
 
 - It's recommended that your OS be clean (without any other software installed). Otherwise, there may be conflicts.
 - Ensure your disk of each node is at least **100G**.
@@ -55,12 +54,12 @@ KubeKey can install Kubernetes and KubeSphere together. The dependency that need
 
 {{</ notice >}} 
 
-### Network and DNS Requirements
+### Network and DNS requirements
 
 - Make sure the DNS address in `/etc/resolv.conf` is available. Otherwise, it may cause some issues of DNS in clusters.
 - If your network configuration uses Firewall or Security Group, you must ensure infrastructure components can communicate with each other through specific ports. It's recommended that you turn off the firewall. For more information, refer to [Port Requirements](../port-firewall/).
 
-### Example Machines
+### Example machines
 
 This example includes three hosts as below with the master node serving as the taskbox.
 
@@ -74,7 +73,7 @@ This example includes three hosts as below with the master node serving as the t
 
 You can use Harbor or any other private image registries. This tutorial uses Docker registry as an example with [self-signed certificates](https://docs.docker.com/registry/insecure/#use-self-signed-certificates) (If you have your own private image registry, you can skip this step).
 
-### Use Self-signed Certificates
+### Use self-signed certificates
 
 1. Generate your own certificate by executing the following commands:
 
@@ -92,7 +91,7 @@ You can use Harbor or any other private image registries. This tutorial uses Doc
 
    ![self-signed-cert](/images/docs/installing-on-linux/introduction/air-gapped-installation/self-signed-cert.jpg)
 
-### Start Docker Registry
+### Start the Docker registry
 
 Run the following commands to start the Docker registry:
 
@@ -109,7 +108,7 @@ docker run -d \
   registry:2
 ```
 
-### Configure Registry
+### Configure the registry
 
 1. Add an entry to `/etc/hosts` to map the hostname (i.e. the registry domain name; in this case, it is `dockerhub.kubekey.local`) to the private IP address of your machine as below.
 
@@ -223,7 +222,7 @@ As you install KubeSphere and Kubernetes on Linux, you need to prepare an image 
 
    {{</ notice >}} 
 
-## Step 5: Push Images to Private Registry
+## Step 5: Push Images to Your Private Registry
 
 Transfer your packaged image file to your local machine and execute the following command to push it to the registry.
 
@@ -241,7 +240,7 @@ The domain name is `dockerhub.kubekey.local` in the command. Make sure you use y
 
 In this tutorial, KubeSphere is installed on multiple nodes, so you need to specify a configuration file to add host information. Besides, for air-gapped installation, pay special attention to `.spec.registry.privateRegistry`, which must be set to **your own registry address**. See the [complete YAML file](../air-gapped-installation/#2-edit-the-configuration-file) below for more information.
 
-### Create an Example Configuration File
+### Create an example configuration file
 
 Execute the following command to generate an example configuration file for installation:
 
@@ -257,11 +256,13 @@ For example:
 
 {{< notice note >}}
 
-Make sure the Kubernetes version is the one you downloaded.
+- Make sure the Kubernetes version is the one you downloaded.
+
+- If you do not add the flag `--with-kubesphere` in the command in this step, KubeSphere will not be deployed unless you install it using the `addons` field in the configuration file or add this flag again when you use `./kk create cluster` later.
 
 {{</ notice >}}
 
-### Edit the Configuration File
+### Edit the configuration file
 
 Edit the generated configuration file `config-sample.yaml`. Here is an example for your reference:
 
@@ -429,7 +430,7 @@ Now, you will be able to access the web console of KubeSphere through `http://{I
 
 {{< notice note >}}
 
-To access the console, make sure the port 30880 is opened in your security group.
+To access the console, make sure port 30880 is opened in your security group.
 
 {{</ notice >}}
 
@@ -437,7 +438,7 @@ To access the console, make sure the port 30880 is opened in your security group
 
 ## Appendix
 
-### Image List of KubeSphere v3.0.0
+### Image list of KubeSphere v3.0.0
 
 ```txt
 ##k8s-images

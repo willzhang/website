@@ -4,7 +4,7 @@ keywords: 'KubeSphere, Kubernetes, Deployments, workload'
 description: 'Kubernetes Deployments'
 linkTitle: "Deployments"
 
-weight: 2230
+weight: 10210
 ---
 
 A Deployment controller provides declarative updates for Pods and ReplicaSets. You describe a desired state in a Deployment object, and the Deployment controller changes the actual state to the desired state at a controlled rate. As a Deployment runs a number of replicas of your application, it automatically replaces instances that go down or malfunction. This is how Deployments make sure app instances are available to handle user requests.
@@ -13,23 +13,23 @@ For more information, see the [official documentation of Kubernetes](https://kub
 
 ## Prerequisites
 
-You need to create a workspace, a project and an account (`project-regular`). The account must be invited to the project with the role of `operator`. For more information, see [Create Workspace, Project, Account and Role](../../../quick-start/create-workspace-and-project).
+You need to create a workspace, a project and an account (`project-regular`). The account must be invited to the project with the role of `operator`. For more information, see [Create Workspaces, Projects, Accounts and Roles](../../../quick-start/create-workspace-and-project).
 
 ## Create a Deployment
 
-### Step 1: Open Dashboard
+### Step 1: Open the dashboard
 
-Log in the console as `project-regular`. Go to **Application Workloads** of a project, select **Workloads**, and click **Create** under the tab **Deployments**.
+Log in to the console as `project-regular`. Go to **Application Workloads** of a project, select **Workloads**, and click **Create** under the tab **Deployments**.
 
 ![deployments](/images/docs/project-user-guide/workloads/deployments.png)
 
-### Step 2: Input Basic Information
+### Step 2: Input basic information
 
 Specify a name for the Deployment (e.g. `demo-deployment`) and click **Next** to continue.
 
 ![deployments](/images/docs/project-user-guide/workloads/deployments_form_1.jpg)
 
-### Step 3: Set Image
+### Step 3: Set an image
 
 1. Before you set an image, define the number of replicated Pods in **Pod Replicas** by clicking the **plus** or **minus** icon, which is indicated by the `.spec.replicas` field in the manifest file.
 
@@ -50,7 +50,7 @@ You can see the Deployment manifest file in YAML format by enabling **Edit Mode*
     {{< notice note >}}
 
 - Remember to press **Enter** on your keyboard after you input an image name in the search bar.
-- If you want to use your private image repository, you should [create an image secret](../../configuration/image-registry/) first in **Secrets** under **Configurations**.
+- If you want to use your private image repository, you should [create an Image Registry Secret](../../configuration/image-registry/) first in **Secrets** under **Configurations**.
 
     {{</ notice >}}
 
@@ -68,49 +68,21 @@ You can see the Deployment manifest file in YAML format by enabling **Edit Mode*
 
 9. Select a deployment mode. For more information, see [Deployment Mode](../container-image-settings/#deployment-mode).
 
-10. Click **Next** to go to the next step when you finish setting the container image.
+10. Click **Next** to continue when you finish setting the container image.
 
-### Step 4: Mount Volumes
+### Step 4: Mount volumes
 
-You can add a volume directly or mount a ConfigMap or Secret. Alternatively, click **Next** directly to skip this step.
+You can add a volume directly or mount a ConfigMap or Secret. Alternatively, click **Next** directly to skip this step. For more information about volumes, visit [Volumes](../../storage/volumes/#mount-a-volume).
 
 ![deployments](/images/docs/project-user-guide/workloads/deployments_form_3.jpg)
 
-- **Add Volume**: Support EmptyDir and PersistentVolumeClaim.
-
-  In **Add Volume** there are 3 kinds of volumes:
-
-  - **Existing Volume**: Use *PVC* to mount.
-
-    Persistent storage volumes can be used to save users' persistent data. You need to create volumes in advance so that you can choose an existing volume from the list.
-
-  - **Temporary Volume**: Use *emptyDir* to mount.
-
-    The temporary storage volume represents [emptyDir](https://kubernetes.cn/docs/concepts/storage/volumes/#emptydir), which is first created when a Pod is assigned to a node, and exists as long as that Pod is running on that node. When a Pod is removed from a node for any reason, the data in the emptyDir is deleted forever.
-
-  - **HostPath**: Use *HostPath* to mount.
-
-    A HostPath volume mounts a file or directory from the host node's filesystem into your Pod. This is not something that most Pods will need, but it offers a powerful escape hatch for some applications.
-
-- **Mount ConfigMap or Secret**: Support key-value pairs in ConfigMap or Secret.
-
-  A secret volume is used to pass sensitive information, such as passwords, to Pods. Secret volumes are backed by tmpfs (a RAM-backed filesystem) so they are never written to non-volatile storage.
-
-  A ConfigMap is used to store configuration data in the form of key-value pairs. The ConfigMap resource provides a way to inject configuration data into Pods. The data stored in a ConfigMap object can be referenced in a volume of type ConfigMap and then consumed by containerized applications running in a Pod. ConfigMaps are often used in the following cases:
-
-  - Set the value of the environment variable.
-  - Set command parameters in the container.
-  - Create a config file in the volume.
-
-For more information about volumes, please visit [Volumes](../../storage/volumes).
-
 {{< notice note >}}
 
-Deployments can't use the volume template, which is used by StatefulSets.
+Deployments can't use a volume template, which is used by StatefulSets.
 
 {{</ notice>}}
 
-### Step 5: Configure Advanced Settings
+### Step 5: Configure advanced settings
 
 You can set a policy for node scheduling and add metadata in this section. When you finish, click **Create** to complete the whole process of creating a Deployment.
 
@@ -126,7 +98,7 @@ You can set a policy for node scheduling and add metadata in this section. When 
 
 ## Check Deployment Details
 
-### Detail Page
+### Detail page
 
 1. After a Deployment is created, it displays in the list as below. You can click the three dots on the right and select actions from the menu to modify your Deployment.
 
@@ -166,6 +138,6 @@ You can set a policy for node scheduling and add metadata in this section. When 
         - Click the container log icon to view output logs of the container.
         - You can view the Pod detail page by clicking the Pod name.
 
-### Revision Records
+### Revision records
 
 After the resource template of workload is changed, a new log will be generated and Pods will be rescheduled for a version update. The latest 10 versions will be saved by default. You can implement a redeployment based on the change log.

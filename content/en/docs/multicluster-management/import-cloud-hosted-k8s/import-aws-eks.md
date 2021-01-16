@@ -4,7 +4,7 @@ keywords: 'Kubernetes, KubeSphere, multicluster, Amazon eks'
 description: 'Import AWS EKS Cluster'
 
 
-weight: 2340
+weight: 5320
 ---
 
 In this section, we are going to show you how to import EKS to KubeSphere using [direct connection](../../enable-multicluster/direct-connection) method. 
@@ -55,6 +55,10 @@ Let's say you have an EKS cluster which already has KubeSphere installed. And yo
 
 ```shell
 ~:# kubectl get node
+```
+
+The output is similar to this:
+```
 NAME                                        STATUS   ROLES    AGE   VERSION
 ip-10-0-47-38.cn-north-1.compute.internal   Ready    <none>   11h   v1.18.8-eks-7c9bda
 ip-10-0-8-148.cn-north-1.compute.internal   Ready    <none>   78m   v1.18.8-eks-7c9bda
@@ -111,8 +115,12 @@ users:
 ```
 
 Double check our new kubeconfig do has the access to EKS.
-```
+```shell
 ~:# kubectl get nodes
+```
+
+The output is similar to this:
+```
 NAME                                        STATUS   ROLES    AGE   VERSION
 ip-10-0-47-38.cn-north-1.compute.internal   Ready    <none>   11h   v1.18.8-eks-7c9bda
 ip-10-0-8-148.cn-north-1.compute.internal   Ready    <none>   78m   v1.18.8-eks-7c9bda

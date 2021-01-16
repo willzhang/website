@@ -3,7 +3,7 @@ title: "How to integrate Harbor in Pipeline"
 keywords: 'kubernetes, docker, devops, jenkins, harbor'
 description: ''
 linkTitle: "Integrate Harbor in Pipeline"
-weight: 360
+weight: 11320
 ---
 
 ## Prerequisites
@@ -49,7 +49,7 @@ Click **EXPORT TO FILE** to save the credential.
 
 ### Create Credentials
 
-Log into KubeSphere, enter into the created DevOps project and create the following credential under **Project Management → Credentials**:
+Log in to KubeSphere, enter into the created DevOps project and create the following credential under **Project Management → Credentials**:
 
 ![](/images/devops/ks-console-create-credential.png)
 

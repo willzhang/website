@@ -4,7 +4,7 @@ keywords: "Kubernetes, workspace, KubeSphere, multitenancy"
 description: "Role and Member Management in a Workspace"
 
 linkTitle: "Role and Member Management"
-weight: 200
+weight: 9400
 ---
 
 This guide demonstrates how to manage roles and members in your workspace. For more information about KubeSphere roles, see Overview of Role Management.
@@ -19,11 +19,11 @@ In workspace scope, you can grant the following resources' permissions to a role
 
 ## Prerequisites
 
-At least one workspace has been created, such as `demo-workspace`. Besides, you need an account of the `workspace-admin` role (e.g. `ws-admin`) at the workspace level. See [Create Workspace, Project, Account and Role](../../quick-start/create-workspace-and-project/) if they are not ready yet.
+At least one workspace has been created, such as `demo-workspace`. Besides, you need an account of the `workspace-admin` role (e.g. `ws-admin`) at the workspace level. See [Create Workspaces, Projects, Accounts and Roles](../../quick-start/create-workspace-and-project/) if they are not ready yet.
 
 {{< notice note >}} 
 
-The actual role name follows a naming convention: `workspace name-role name`. For example, for a workspace named `demo-workspace`, the actual role name of the role `workspace-admin` is `demo-workspace-admin`.
+The actual role name follows a naming convention: `workspace name-role name`. For example, for a workspace named `demo-workspace`, the actual role name of the role `admin` is `demo-workspace-admin`.
 
 {{</ notice >}} 
 
@@ -38,15 +38,15 @@ In **Workspace Roles**, there are four available built-in roles as shown below. 
 | workspace-regular   | The regular user in the workspace who cannot create projects or DevOps projects. |
 | workspace-admin     | The administrator in the workspace who can perform any action on any resource. It gives full control over all resources in the workspace. |
 
-1. In **Workspace Roles** , click  `workspace-admin` and you can see the role detail as shown below.
+1. In **Workspace Roles** , click `workspace-admin` and you can see the role detail as shown below.
 
    ![workspace_role_detail](/images/docs/workspace-administration/role-and-member-management/workspace_role_detail.png)
 
-2. You can switch to **Authorized Users** tab to see all the users that are granted a `workspace-admin` role.
+2. You can switch to **Authorized Users** tab to see all the users that are granted the `workspace-admin` role.
 
 ## Create a Workspace Role
 
-1. Log in the console as `ws-admin` and go to **Workspace Roles** in **Workspace Settings**.
+1. Log in to the console as `ws-admin` and go to **Workspace Roles** in **Workspace Settings**.
 
    {{< notice note >}}
 
@@ -58,7 +58,7 @@ In **Workspace Roles**, there are four available built-in roles as shown below. 
 
    ![workspace_role_create_step1](/images/docs/workspace-administration/role-and-member-management/workspace_role_create_step1.png)
 
-3. In **Projects management**, select the authorization that you want the user granted this role to have. For example, **Projects Create**, **Projects Management**, and **Projects View** are selected for this role. Click **OK** to finish.
+3. In **Projects management**, select the authorization that you want this role to contain. For example, **Projects Create**, **Projects Management**, and **Projects View** are selected for this role. Click **OK** to finish.
 
    ![workspace_role_create_step2](/images/docs/workspace-administration/role-and-member-management/workspace_role_create_step2.png)
 

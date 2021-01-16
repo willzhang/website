@@ -3,7 +3,7 @@ title: "ConfigMaps"
 keywords: 'KubeSphere, Kubernetes, ConfigMaps'
 description: 'How to create a ConfigMap in KubeSphere'
 linkTitle: "ConfigMaps"
-weight: 2110
+weight: 10420
 ---
 
 A Kubernetes [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/) is used to store configuration data in the form of key-value pairs. The ConfigMap resource provides a way to inject configuration data into Pods. The data stored in a ConfigMap object can be referenced in a volume of type `ConfigMap` and then consumed by containerized applications running in a Pod. ConfigMaps are often used in the following cases:
@@ -12,19 +12,21 @@ A Kubernetes [ConfigMap](https://kubernetes.io/docs/concepts/configuration/confi
 - Set command parameters in containers.
 - Create a configuration file in volumes.
 
+This tutorial demonstrates how to create a ConfigMap in KubeSphere.
+
 ## Prerequisites
 
-You need to create a workspace, a project and an account (`project-regular`). The account must be invited to the project with the role of `operator`. For more information, see [Create Workspace, Project, Account and Role](../../../quick-start/create-workspace-and-project).
+You need to create a workspace, a project and an account (`project-regular`). The account must be invited to the project with the role of `operator`. For more information, see [Create Workspaces, Projects, Accounts and Roles](../../../quick-start/create-workspace-and-project).
 
 ## Create a ConfigMap
 
-### Step 1: Open Dashboard
+### Step 1: Open the dashboard
 
-Log in the console as `project-regular`. Go to **Configurations** of a project, choose **ConfigMaps** and click **Create**.
+Log in to the console as `project-regular`. Go to **Configurations** of a project, choose **ConfigMaps** and click **Create**.
 
 ![create-configmap](/images/docs/project-user-guide/configurations/configmaps/create-configmap.jpg)
 
-### Step 2: Input Basic Information
+### Step 2: Input basic information
 
 Specify a name for the ConfigMap (e.g. `demo-configmap`) and click **Next** to continue.
 
@@ -36,7 +38,7 @@ You can see the ConfigMap manifest file in YAML format by enabling **Edit Mode**
 
 ![set-basic-info](/images/docs/project-user-guide/configurations/configmaps/set-basic-info.jpg)
 
-### Step 3: Input Configuration Values
+### Step 3: Input configuration values
 
 1. Under the tab **ConfigMap Settings**, configure values by clicking **Add Data**.
 
@@ -62,8 +64,6 @@ You can see the ConfigMap manifest file in YAML format by enabling **Edit Mode**
 
 ## Check ConfigMap Details
 
-### Detail Page
-
 1. After a ConfigMap is created, it displays in the list as below. You can click the three dots on the right and select the operation from the menu to modify it.
 
     ![configmap-list](/images/docs/project-user-guide/configurations/configmaps/configmap-list.jpg)
@@ -85,7 +85,7 @@ You can see the ConfigMap manifest file in YAML format by enabling **Edit Mode**
     - **Modify Config**: Modify the key-value pair of the ConfigMap.
     - **Delete**: Delete the ConfigMap, and return to the list page.
 
-4. Click the **Eidt Info** to view and edit the basic information.
+4. Click the **Edit Info** to view and edit the basic information.
 
     ![edit-configmap-info](/images/docs/project-user-guide/configurations/configmaps/edit-configmap-info.jpg)
     

@@ -1,6 +1,6 @@
 ---
 linkTitle: "Log collection"
-weight: 2000 
+weight: 8620 
 
 _build:
     render: false

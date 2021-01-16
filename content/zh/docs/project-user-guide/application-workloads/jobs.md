@@ -1,82 +1,80 @@
 ---
-title: "Jobs"
-keywords: "KubeSphere, Kubernetes, docker, jobs"
+title: 任务
+keywords: "KubeSphere, Kubernetes, docker, 任务"
 description: "Create a Kubernetes Job"
-CronJobs: "Jobs"
+linkTitle: "任务"
 
-weight: 2270
+weight: 10250
 ---
 
-A Job creates one or more Pods and ensures that a specified number of them successfully terminate. As Pods successfully complete, the Job tracks the successful completions. When a specified number of successful completions is reached, the task (ie, Job) is complete. Deleting a Job will clean up the Pods it created.
+任务会创建一个或者多个 Pod，并确保指定数量的 Pod 成功结束。随着 Pod 成功结束，任务跟踪记录成功结束的 Pod 数量。当达到指定的成功结束数量时，任务（即 Job）完成。删除任务的操作会清除其创建的全部 Pod。
 
-A simple case is to create one Job object in order to reliably run one Pod to completion. The Job object will start a new Pod if the first Pod fails or is deleted (for example due to a node hardware failure or a node reboot). You can also use a Job to run multiple Pods in parallel.
+在简单的使用场景中，您可以创建一个任务对象，以便可靠地运行一个 Pod 直到结束。当第一个 Pod 故障或者被删除（例如因为节点硬件故障或者节点重启）时，任务对象会启动一个新的 Pod。您也可以使用一个任务并行运行多个 Pod。
 
-The following example demonstrates specific steps of creating a Job (computing π to 2000 decimal places) in KubeSphere.
+下面的示例演示了在 KubeSphere 中创建任务的具体步骤，该任务会计算 π 到小数点后 2000 位。 
 
-## Prerequisites
+## 准备工作
 
-You need to create a workspace, a project and an account (`project-regular`). The account must be invited to the project with the role of `operator`. For more information, see [Create Workspace, Project, Account and Role](../../../quick-start/create-workspace-and-project).
+您需要创建一个企业空间、一个项目和一个帐户 (`project-regular`)，务必邀请该帐户到项目中并赋予 `operator` 角色。有关更多信息，请参见[创建企业空间、项目、帐户和角色](../../../quick-start/create-workspace-and-project/)。
 
-## Create a Job
+## 创建任务
 
-### Step 1: Open Dashboard
+### 步骤 1：打开仪表板
 
-Log in the console as `project-regular`. Go to **Application Workloads** and click **Jobs**. Click **Create** to open the modal.
+以 `project-regular` 身份登录控制台。转到**应用负载**下的**任务**，点击**创建**。
 
-![create-job](/images/docs/project-user-guide/application-workloads/jobs/create-job.jpg)
+![创建任务](/images/docs/zh-cn/project-user-guide/application-workloads/jobs/create-job.PNG)
 
-### Step 2: Input Basic Information
+### 步骤 2：输入基本信息
 
-Enter the basic information. Refer to the image below as an example.
+输入基本信息。请参考下图作为示例。
 
-- **Name**: The name of the Job, which is also the unique identifier.
-- **Alias**: The alias name of the Job, making resources easier to identify.
-- **Description**: The description of the Job, which gives a brief introduction of the Job.
+- **名称**：任务的名称，也是唯一标识符。
+- **别名**：任务的别名，使资源易于识别。
+- **描述信息**：任务的描述，简要介绍任务。
 
-![job-create-basic-info](/images/docs/project-user-guide/application-workloads/jobs/job-create-basic-info.png)
+![输入基本信息](/images/docs/zh-cn/project-user-guide/application-workloads/jobs/job-create-basic-info.PNG)
 
-### Step 3: Job Settings (Optional)
+### 步骤 3：任务设置（可选）
 
-You can set the values in this step as below or click **Next** to use the default values. Refer to the table below for detailed explanations of each field.
+您可以参照下图在该步骤设置值，或点击**下一步**以使用默认值。有关每个字段的详细说明，请参考下表。
 
-![job-create-job-settings](/images/docs/project-user-guide/application-workloads/jobs/job-create-job-settings.png)
+![任务设置](/images/docs/zh-cn/project-user-guide/application-workloads/jobs/job-create-job-settings.PNG)
 
-| Name                    | Definition                   | Description                                                  |
-| ----------------------- | ---------------------------- | ------------------------------------------------------------ |
-| Back off Limit          | `spec.backoffLimit`          | It specifies the number of retries before this Job is marked failed. It defaults to 6. |
-| Completions             | `spec.completions`           | It specifies the desired number of successfully finished Pods the Job should be run with. Setting it to nil means that the success of any Pod signals the success of all Pods, and allows parallelism to have any positive value. Setting it to 1 means that parallelism is limited to 1 and the success of that Pod signals the success of the Job. For more information, see [Jobs](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/). |
-| Parallelism             | `spec.parallelism`           | It specifies the maximum desired number of Pods the Job should run at any given time. The actual number of Pods running in a steady state will be less than this number when the work left to do is less than max parallelism ((`.spec.completions - .status.successful`) < `.spec.parallelism`). For more information, see [Jobs](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/). |
-| Active Deadline Seconds | `spec.activeDeadlineSeconds` | It specifies the duration in seconds relative to the startTime that the Job may be active before the system tries to terminate it; the value must be a positive integer. |
+| 名称                   | 定义                         | 描述信息                                                     |
+| ---------------------- | ---------------------------- | ------------------------------------------------------------ |
+| 最大重试次数           | `spec.backoffLimit`          | 指定将该任务视为失败之前的重试次数。默认值为 6。             |
+| 完成数                 | `spec.completions`           | 指定该任务应该运行至成功结束的 Pod 的期望数量。如果设置为 nil，则意味着任何 Pod 成功结束即标志着所有 Pod 成功结束，并且允许并行数为任何正数值。如果设置为 1，则意味着并行数限制为 1，并且该 Pod 成功结束标志着任务成功完成。有关更多信息，请参见 [Jobs](https://kubernetes.io/zh/docs/concepts/workloads/controllers/job/)。 |
+| 并行数                 | `spec.parallelism`           | 指定该任务在任何给定时间应该运行的最大期望 Pod 数量。当剩余工作小于最大并行数时 ((`.spec.completions - .status.successful`) < `.spec.parallelism`)，实际稳定运行的 Pod 数量会小于该值。有关更多信息，请参见 [Jobs](https://kubernetes.io/zh/docs/concepts/workloads/controllers/job/)。 |
+| 退出超时时限(单位：秒) | `spec.activeDeadlineSeconds` | 指定该任务在系统尝试终止任务前处于运行状态的持续时间（相对于 stratTime），单位为秒；该值必须是正整数。 |
 
-### Step 4: Set Image
+### 步骤 4：设置镜像
 
-1. Select **Never** for **Restart Policy**. You can only specify **Never** or **OnFailure** for **Restart Policy** when the Job is not completed:
+1. **重启策略**选择 **Never**。当任务未完成时，您只能将**重启策略**指定为 **Never** 或 **OnFailure**：
 
-   - If **Restart Policy** is set to **Never**, the Job creates a new Pod when the Pod fails, and the failed Pod does not disappear.
+   - 如果将**重启策略**设置为 **Never**，当 Pod 发生故障时，任务将创建一个新的 Pod，并且故障的 Pod 不会消失。
 
-   - If **Restart Policy** is set to **OnFailure**, the Job will internally restart the container when the Pod fails, instead of creating a new Pod.
+   - 如果将**重启策略**设置为 **OnFailure**，当 Pod 发生故障时，任务会在内部重启容器，而不是创建新的 Pod。
 
-    ![job-container-settings](/images/docs/project-user-guide/application-workloads/jobs/job-container-settings.png)
+    ![设置镜像](/images/docs/zh-cn/project-user-guide/application-workloads/jobs/job-container-settings.PNG)
 
-2. Click **Add Container Image** which directs you to the **Add Container** page. Enter `perl` in the image search bar and press the **Return** key.
+2. 点击**添加容器镜像**，它将引导您进入**添加容器**页面。在镜像搜索栏中输入 `perl`，然后按**回车**键。
 
-    ![add-container-image-job](/images/docs/project-user-guide/application-workloads/jobs/add-container-image-job.png)
+    ![添加镜像](/images/docs/zh-cn/project-user-guide/application-workloads/jobs/add-container-image-job.PNG)
 
-3. On the same page, scroll down to **Start Command**. Input the following commands in the box which computes pi to 2000 places then prints it. Click **√** in the bottom right corner and select **Next** to continue.
+3. 在该页面向下滚动到**启动命令**。在命令框中输入以下命令，计算 pi 到小数点后 2000 位并输出结果。点击右下角的 **√**，然后选择**下一步**继续。
 
     ```bash
     perl,-Mbignum=bpi,-wle,print bpi(2000)
     ```
 
-    ![start-command-job](/images/docs/project-user-guide/application-workloads/jobs/start-command-job.jpg)
+    ![启动命令](/images/docs/zh-cn/project-user-guide/application-workloads/jobs/start-command-job.PNG)
 
-    {{< notice note >}}
-For more information about setting images, see [Container Image Settings](../container-image-settings/).
-    {{</ notice >}}
+    {{< notice note >}}有关设置镜像的更多信息，请参见[容器镜像设置](../../../project-user-guide/application-workloads/container-image-settings/)。{{</ notice >}}
 
-### Step 5: Inspect Job Manifest (Optional)
+### 步骤 5：检查任务清单（可选）
 
-1. Enable **Edit Mode** in the top right corner which displays the manifest file of the Job. You can see all the values are set based on what you have specified in the previous steps.
+1. 在右上角启用**编辑模式**，显示任务的清单文件。您可以看到所有值都是根据先前步骤中指定的值而设置。
 
     ```yaml
     apiVersion: batch/v1
@@ -117,48 +115,45 @@ For more information about setting images, see [Container Image Settings](../con
       activeDeadlineSeconds: 300
     ```
 
-2. You can make adjustments in the manifest directly and click **Create** or disable the **Edit Mode** and get back to the **Create Job** page.
+2. 您可以直接在清单文件中进行调整，然后点击**创建**，或者关闭**编辑模式**然后返回**创建任务**页面。
 
-    {{< notice note >}}
-You can skip **Mount Volumes** and **Advanced Settings** for this tutorial. For more information, see [Pod Volumes](../deployments/#step-4-mount-volumes) and [Deployment Advanced Settings](../deployments/#step-5-configure-advanced-settings).
-    {{</ notice >}}
+    {{< notice note >}}您可以跳过本教程的**挂载存储**和**高级设置**。有关更多信息，请参见[挂载存储卷](../../../project-user-guide/application-workloads/deployments/#步骤-4挂载存储卷)和[配置高级设置](../../../project-user-guide/application-workloads/deployments/#步骤-5配置高级设置)。{{</ notice >}}
 
-### Step 6: Check Result
+### 步骤 6：检查结果
 
-1. In the final step of **Advanced Settings**, click **Create** to finish. A new item will be added to the Job list if the creation is successful.
+1. 在最后一步**高级设置**中，点击**创建**完成操作。如果创建成功，将添加新条目到任务列表中。
 
-    ![job-list-new](/images/docs/project-user-guide/application-workloads/jobs/job-list-new.png)
+    ![任务列表](/images/docs/zh-cn/project-user-guide/application-workloads/jobs/job-list-new.PNG)
 
-2. Click this Job and go to **Execution Records** tab where you can see the information of each execution record. There are four completed Pods since **Completions** was set to `4` in Step 3.
+2. 点击此任务，然后转到**执行记录**选项卡，您可以在其中查看每个执行记录的信息。先前在步骤 3 中**完成数**设置为 `4`，因此有四个已结束的 Pod。
 
-    ![execution-record](/images/docs/project-user-guide/application-workloads/jobs/execution-record.jpg)
+    ![执行记录](/images/docs/zh-cn/project-user-guide/application-workloads/jobs/execution-record.PNG)
 
-    {{< notice tip >}}
-You can rerun the Job if it fails, the reason of which displays under **Messages**.
-    {{</ notice >}}
+    {{< notice tip >}}如果任务失败，您可以重新运行该任务，失败原因显示在**消息**下。{{</ notice >}}
 
-3. In **Resource Status**, you can inspect the Pod status. Two Pods were created each time as **Parallelism** was set to 2. Click the arrow on the right and check the container log as shown below, which displays the expected calculation result.
+3. 在**资源状态**中，您可以查看 Pod 状态。先前将**并行数**设置为 2，因此每次会创建两个 Pod。点击右侧的箭头，查看容器日志，如下所示，该日志显示了预期的计算结果。
 
-    ![container-log](/images/docs/project-user-guide/application-workloads/jobs/container-log.jpg)
+    ![容器日志](/images/docs/zh-cn/project-user-guide/application-workloads/jobs/container-log.PNG)
 
-    ![container-log-check](/images/docs/project-user-guide/application-workloads/jobs/container-log-check.jpg)
+    ![查看容器日志](/images/docs/zh-cn/project-user-guide/application-workloads/jobs/container-log-check.jpg)
 
     {{< notice tip >}}
 
-- In **Resource Status**, the Pod list provides the Pod's detailed information (e.g. creation time, node, Pod IP and monitoring data).
-- You can view the container information by clicking the Pod.
-- Click the container log icon to view the output logs of the container.
-- You can view the Pod detail page by clicking the Pod name.
+- 在**资源状态**中，Pod 列表提供了 Pod 的详细信息（例如创建时间、节点、Pod IP 和监控数据）。
+- 您可以点击 Pod 查看容器信息。
+- 点击容器日志图标查看容器的输出日志。
+- 您可以点击 Pod 名称查看 Pod 详情页面。
 
     {{</ notice >}}
 
-## Job Operations
+## 任务操作
 
-On the Job detail page, you can manage the Job after it is created.
+在任务详情页面上，您可以在任务创建后对其进行管理。
 
-- **Edit Info**: Edit the basic information except `Name` of the job.
-- **Rerun Job**: Rerun the Job, the Pod will restart, and a new execution record will be generated.
-- **View YAML**: View the Job's specification in YAML format.
-- **Delete**: Delete the Job and return to the Job list page.
+- **编辑信息**：编辑基本信息，但`名称`无法编辑。
+- **重新执行**：重新执行任务，Pod 将重启，并生成新的执行记录。
+- **查看配置文件**：查看 YAML 格式的任务规格。
+- **删除**：删除该任务并返回到任务列表页面。
 
-![job-operation](/images/docs/project-user-guide/application-workloads/jobs/job-operation.jpg)
+![任务操作](/images/docs/zh-cn/project-user-guide/application-workloads/jobs/job-operation.PNG)
+

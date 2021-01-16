@@ -1,9 +1,9 @@
 ---
-title: "Deploy Apps from App Store"
+title: "Deploy Apps from the App Store"
 keywords: 'Kubernetes, chart, helm, KubeSphere, application, App Store'
 description: 'How to deploy apps from the App Store.'
-linkTitle: "Deploy Apps from App Store"
-weight: 2220
+linkTitle: "Deploy Apps from the App Store"
+weight: 10130
 ---
 
 The [App Store](../../../application-store/) is also the public app repository on the platform, which means every tenant on the platform can view the applications in the Store regardless of which workspace they belong to. The App Store contains 15 featured enterprise-ready containerized apps and apps released by tenants from different workspaces on the platform. Any authenticated users can deploy applications from the Store. This is different from private app repositories which are only accessible to tenants in the workspace where private app repositories are imported.
@@ -13,11 +13,11 @@ This tutorial demonstrates how to quickly deploy [NGINX](https://www.nginx.com/)
 ## Prerequisites
 
 - You have enabled [OpenPitirx (App Store)](../../../pluggable-components/app-store).
-- You need to create a workspace, a project, and a user account (`project-regular`) for this tutorial. The account needs to be a platform regular user invited to the project with the `operator` role. For more information, see [Create Workspace, Project, Account and Role](../../../quick-start/create-workspace-and-project/).
+- You need to create a workspace, a project, and a user account (`project-regular`) for this tutorial. The account needs to be a platform regular user invited to the project with the `operator` role. For more information, see [Create Workspaces, Projects, Accounts and Roles](../../../quick-start/create-workspace-and-project/).
 
 ## Hands-on Lab
 
-### Step 1: Deploy NGINX from App Store
+### Step 1: Deploy NGINX from the App Store
 
 1. On the **Overview** page of the project `demo-project`, click **App Store** in the top left corner.
 

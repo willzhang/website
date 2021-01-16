@@ -5,7 +5,7 @@ layout: "single"
 
 linkTitle: "Workspace Administration and User Guide"
 
-weight: 4200
+weight: 9000
 
 icon: "/images/docs/docs.svg"
 
@@ -15,7 +15,7 @@ KubeSphere tenants work in a workspace to manage projects and apps. Among others
 
 This chapter demonstrates how workspace administrators and tenants work at the workspace level.
 
-## [Workspace Overview](../workspace-administration/workspace-overview/)
+## [Workspace Overview](../workspace-administration/what-is-workspace/)
 
 Understand the concept of workspace in KubeSphere and learn how to create and delete a workspace.
 

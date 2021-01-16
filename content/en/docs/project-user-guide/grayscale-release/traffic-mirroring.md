@@ -2,9 +2,8 @@
 title: "Traffic Mirroring"
 keywords: 'KubeSphere, Kubernetes, traffic mirroring, istio'
 description: 'Traffic Mirroring'
-
 linkTitle: "Traffic Mirroring"
-weight: 2130
+weight: 10540
 ---
 
 Traffic mirroring, also called shadowing, is a powerful, risk-free method of testing your app versions as it sends a copy of live traffic to a service that is being mirrored. Namely, you implement a similar setup for acceptance test so that problems can be detected in advance. As mirrored traffic happens out of band of the critical request path for the primary service, your end users will not be affected during the whole process.
@@ -12,12 +11,12 @@ Traffic mirroring, also called shadowing, is a powerful, risk-free method of tes
 ## Prerequisites
 
 - You need to enable [KubeSphere Service Mesh](../../../pluggable-components/service-mesh/).
-- You need to create a workspace, a project and an account (`project-regular`). The account must be invited to the project with the role of `operator`. For more information, see [Create Workspace, Project, Account and Role](../../../quick-start/create-workspace-and-project).
+- You need to create a workspace, a project and an account (`project-regular`). The account must be invited to the project with the role of `operator`. For more information, see [Create Workspaces, Projects, Accounts and Roles](../../../quick-start/create-workspace-and-project).
 - You need to enable **Application Governance** and have an available app so that you can mirror the traffic of it. The sample app used in this tutorial is Bookinfo. For more information, see [Deploy Bookinfo and Manage Traffic](../../../quick-start/deploy-bookinfo-to-k8s/).
 
-## Create Traffic Mirroring Job
+## Create a Traffic Mirroring Job
 
-1. Log in KubeSphere as `project-regular`. Under **Categories**, click **Create Job** on the right of **Traffic Mirroring**.
+1. Log in to KubeSphere as `project-regular`. Under **Categories**, click **Create Job** on the right of **Traffic Mirroring**.
 
    ![traffic-mirroring-1](/images/docs/project-user-guide/grayscale-release/traffic-mirroring/traffic-mirroring-1.jpg)
 

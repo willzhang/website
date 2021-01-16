@@ -3,7 +3,7 @@ title: "Overview"
 keywords: 'Kubernetes, KubeSphere, grayscale release, overview, service mesh'
 description: 'An overview of grayscale release.'
 linkTitle: "Overview"
-weight: 2110
+weight: 10510
 ---
 
 Modern, cloud-native applications are often composed of a group of independently deployable components, also known as microservices. In a microservices architecture, developers are able to make adjustments to their apps with great flexibility as they do not affect the network of services each performing a specific function. This kind of network of microservices making up an application is also called **service mesh**.
@@ -22,7 +22,7 @@ A blue-green deployment provides an efficient method of releasing new versions w
 
 ### [Canary Release](../canary-release/)
 
-A canary deployment reduces the risk of version upgrades to a minimum as it slowly rolls out changes to a small subset of users. More specially, you have the option to expose a new app version to a portion of production traffic, which is defined by yourself on the highly responsive dashboard. Besides, KubeSphere gives you a visualized view of real-time traffic as it monitors requests after you implement a canary deployment. During the process, you can analyze the behavior of the new app version and choose to gradually increase the percentage of traffic sent to it. Once you are confident of the build, you can route all the traffic to it.
+A canary deployment reduces the risk of version upgrades to a minimum as it slowly rolls out changes to a small subset of users. More specifically, you have the option to expose a new app version to a portion of production traffic, which is defined by yourself on the highly responsive dashboard. Besides, KubeSphere gives you a visualized view of real-time traffic as it monitors requests after you implement a canary deployment. During the process, you can analyze the behavior of the new app version and choose to gradually increase the percentage of traffic sent to it. Once you are confident of the build, you can route all the traffic to it.
 
 ### [Traffic Mirroring](../traffic-mirroring/)
 

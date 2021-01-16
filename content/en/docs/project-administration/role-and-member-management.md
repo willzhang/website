@@ -4,7 +4,7 @@ keywords: 'KubeSphere, Kubernetes, role, member, management, project'
 description: 'Role and Member Management in a Project'
 
 linkTitle: "Role and Member Management"
-weight: 2130
+weight: 13200
 ---
 
 This guide demonstrates how to manage roles and members in your project. For more information about KubeSphere roles, see Overview of Role Management.
@@ -20,7 +20,7 @@ In project scope, you can grant the following resources' permissions to a role:
 
 ## Prerequisites
 
-At least one project has been created, such as `demo-project`. Besides, you need an account of the `admin` role (e.g. `project-admin`) at the project level. See [Create Workspace, Project, Account and Role](../../quick-start/create-workspace-and-project/) if it is not ready yet.
+At least one project has been created, such as `demo-project`. Besides, you need an account of the `admin` role (e.g. `project-admin`) at the project level. See [Create Workspaces, Projects, Accounts and Roles](../../quick-start/create-workspace-and-project/) if it is not ready yet.
 
 ## Built-in Roles
 
@@ -40,7 +40,7 @@ In **Project Roles**, there are three available built-in roles as shown below. B
 
 ## Create a Project Role
 
-1. Log in the console as `project-admin` and select a project (e.g. `demo-project`) under **Projects** list.
+1. Log in to the console as `project-admin` and select a project (e.g. `demo-project`) under **Projects** list.
 
     {{< notice note >}}
 
@@ -52,7 +52,7 @@ The account `project-admin` is used as an example. As long as the account you ar
 
     ![Create a project role](/images/docs/project-admin/project_role_create_step1.png)
 
-3. Select the authorization that you want the user granted this role to have. For example, **Application Workloads View** in **Application Workloads**, and **Alerting Messages View** and **Alerting Policies View** in **Monitoring & Alerting** are selected for this role. Click **OK** to finish.
+3. Select the authorization that you want this role to contain. For example, **Application Workloads View** in **Application Workloads**, and **Alerting Messages View** and **Alerting Policies View** in **Monitoring & Alerting** are selected for this role. Click **OK** to finish.
 
     ![Edit Authorization](/images/docs/project-admin/project_role_create_step2.png)
 

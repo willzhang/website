@@ -4,7 +4,7 @@ keywords: 'kubernetes, kubesphere, gitlab, app-store'
 description: 'How to deploy GitLab'
 
 
-weight: 2240
+weight: 14310
 ---
 
 ## Objective
@@ -14,7 +14,7 @@ This tutorial shows you how to quickly deploy a [GitLab](https://gitlab.com/gitl
 ## Prerequisites
 
 - You have enabled [OpenPitrix](/docs/pluggable-components/app-store/).
-- You have completed the tutorial [Create Workspace, Project, Account and Role](/docs/quick-start/create-workspace-and-project/). The account needs to be a platform regular user and to be invited as the project operator with the `operator` role. In this tutorial, we'll work in the project `apps` of the workspace `apps`.
+- You have completed the tutorial [Create Workspaces, Projects, Accounts and Roles](/docs/quick-start/create-workspace-and-project/). The account needs to be a platform regular user and to be invited as the project operator with the `operator` role. In this tutorial, we'll work in the project `apps` of the workspace `apps`.
 
 ## Hands-on Lab
 

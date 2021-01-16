@@ -3,8 +3,7 @@ title: "DaemonSets"
 keywords: 'KubeSphere, Kubernetes, DaemonSet, workload'
 description: 'Kubernetes DaemonSets'
 linkTitle: "DaemonSets"
-
-weight: 2250
+weight: 10230
 ---
 
 A DaemonSet manages groups of replicated Pods while it ensures that all (or some) nodes run a copy of a Pod. As nodes are added to the cluster, DaemonSets automatically add Pods to the new nodes as needed.
@@ -21,23 +20,23 @@ DaemonSets are very helpful in cases where you want to deploy ongoing background
 
 ## Prerequisites
 
-You need to create a workspace, a project and an account (`project-regular`). The account must be invited to the project with the role of `operator`. For more information, see [Create Workspace, Project, Account and Role](../../../quick-start/create-workspace-and-project).
+You need to create a workspace, a project and an account (`project-regular`). The account must be invited to the project with the role of `operator`. For more information, see [Create Workspaces, Projects, Accounts and Roles](../../../quick-start/create-workspace-and-project).
 
 ## Create a DaemonSet
 
-### Step 1: Open Dashboard
+### Step 1: Open the dashboard
 
-Log in the console as `project-regular`. Go to **Application Workloads** of a project, select **Workloads**, and click **Create** under the tab **DaemonSets**.
+Log in to the console as `project-regular`. Go to **Application Workloads** of a project, select **Workloads**, and click **Create** under the tab **DaemonSets**.
 
 ![daemonsets](/images/docs/project-user-guide/workloads/daemonsets.jpg)
 
-### Step 2: Input Basic Information
+### Step 2: Input basic information
 
 Specify a name for the DaemonSet (e.g. `demo-daemonset`) and click **Next** to continue.
 
 ![daemonsets](/images/docs/project-user-guide/workloads/daemonsets_form_1.jpg)
 
-### Step 3: Set Image
+### Step 3: Set an image
 
 1. Click the **Add Container Image** box.
 
@@ -50,7 +49,7 @@ Specify a name for the DaemonSet (e.g. `demo-daemonset`) and click **Next** to c
     {{< notice note >}}
 
 - Remember to press **Enter** on your keyboard after you input an image name in the search bar.
-- If you want to use your private image repository, you should [create an image secret](../../configuration/image-registry/) first in **Secrets** under **Configurations**.
+- If you want to use your private image repository, you should [create an Image Registry Secret](../../configuration/image-registry/) first in **Secrets** under **Configurations**.
 
     {{</ notice >}}
 
@@ -68,43 +67,21 @@ Specify a name for the DaemonSet (e.g. `demo-daemonset`) and click **Next** to c
 
 8. Select a deployment mode. For more information, see [Deployment Mode](../container-image-settings/#deployment-mode).
 
-9. Click **Next** to go to the next step when you finish setting the container image.
+9. Click **Next** to continue when you finish setting the container image.
 
-### Step 4: Mount Volumes
+### Step 4: Mount volumes
 
-You can add a volume directly or mount a ConfigMap or Secret. Alternatively, click **Next** directly to skip this step.
+You can add a volume directly or mount a ConfigMap or Secret. Alternatively, click **Next** directly to skip this step. For more information about volumes, visit [Volumes](../../storage/volumes/#mount-a-volume).
 
 ![daemonsets](/images/docs/project-user-guide/workloads/daemonsets_form_3.jpg)
 
-- **Add Volume**: Support EmptyDir and PersistentVolumeClaim.
+{{< notice note >}}
 
-  In **Add Volume** there are 3 kinds of volumes:
+DaemonSets can't use a volume template, which is used by StatefulSets.
 
-  - **Existing Volume**: Use *PVC* to mount.
+{{</ notice>}}
 
-    Persistent storage volumes can be used to save users' persistent data. You need to create volumes in advance so that you can choose an existing volume from the list.
-
-  - **Temporary Volume**: Use *emptyDir* to mount.
-
-    The temporary storage volume represents [emptyDir](https://kubernetes.cn/docs/concepts/storage/volumes/#emptydir), which is first created when a Pod is assigned to a node, and exists as long as that Pod is running on that node. When a Pod is removed from a node for any reason, the data in the emptyDir is deleted forever.
-
-  - **HostPath**: Use *HostPath* to mount.
-
-    A HostPath volume mounts a file or directory from the host node's filesystem into your Pod. This is not something that most Pods will need, but it offers a powerful escape hatch for some applications.
-
-- **Mount ConfigMap or Secret**: Support key-value pairs in ConfigMap or Secret.
-
-  A secret volume is used to pass sensitive information, such as passwords, to Pods. Secret volumes are backed by tmpfs (a RAM-backed filesystem) so they are never written to non-volatile storage.
-
-  A ConfigMap is used to store configuration data in the form of key-value pairs. The ConfigMap resource provides a way to inject configuration data into Pods. The data stored in a ConfigMap object can be referenced in a volume of type ConfigMap and then consumed by containerized applications running in a Pod. ConfigMaps are often used in the following cases:
-
-  - Set the value of the environment variable.
-  - Set command parameters in the container.
-  - Create a config file in the volume.
-
-For more information about volumes, please visit [Volumes](../../storage/volumes).
-
-### Step 5: Configure Advanced Settings
+### Step 5: Configure advanced settings
 
 You can add metadata in this section. When you finish, click **Create** to complete the whole process of creating a DaemonSet.
 
@@ -116,7 +93,7 @@ You can add metadata in this section. When you finish, click **Create** to compl
 
 ## Check DaemonSet Details
 
-### Detail Page
+### Detail page
 
 1. After a DaemonSet is created, it displays in the list as below. You can click the three dots on the right and select the operation from the menu to modify a DaemonSet.
 
@@ -155,6 +132,6 @@ You can add metadata in this section. When you finish, click **Create** to compl
       - Click the container log icon to view output logs of the container.
       - You can view the Pod detail page by clicking the Pod name.
 
-### Revision Records
+### Revision records
 
 After the resource template of workload is changed, a new log will be generated and Pods will be rescheduled for a version update. The latest 10 versions will be saved by default. You can implement a redeployment based on the change log.
